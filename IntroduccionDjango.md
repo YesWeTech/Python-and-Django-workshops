@@ -14,3 +14,17 @@ También es importante acostumbrarse a usar [entornos virtuales](https://virtual
 ### Ejercicio
 __Instala Django en un entorno virtual creado con `virtualenv`__
 
+Para ver la versión de Django que tenemos instalada ejecutamos el siguiente comando:
+
+```
+python -m django --version
+```
+
+Es importante destacar que este tutorial está pensado para __Python 3__. Por tanto, si la versión de Python por defecto en tu sistema operativo es Python2, tendrás que usar `python3` en vez de `python`.
+
+## Creando un proyecto
+Una vez tengamos Django instalado en nuestro `virtualenv` pasamos a crear nuestro proyecto. Para ello, debemos usar el comando `django-admin`.
+
+### Ejercicio
+__Busca en internet el uso del comando `django-admin` y crea tu proyecto Django en el entorno virtual en el que has instalado Django previamente.__
+
