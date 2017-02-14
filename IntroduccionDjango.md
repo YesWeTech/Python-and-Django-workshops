@@ -111,7 +111,7 @@ Las vistas se definen en el fichero `views.py` en forma de funciones. Estas func
 
 Por ejemplo, si quisiéramos hacer una vista para imprimir el contenido de una entrada de blog concreta usaríamos la siguiente vista:
 
-```
+```python
 from django.http import HttpResponse
 from .models import BlogEntry
 
