@@ -17,7 +17,7 @@ __Instala Django en un entorno virtual creado con `virtualenv`__ (si no tienes `
 Para ver la versión de Django que tenemos instalada ejecutamos el siguiente comando:
 
 ```
-python -m django --version
+$ python -m django --version
 ```
 
 Es importante destacar que este tutorial está pensado para __Python 3__. Por tanto, si la versión de Python por defecto en tu sistema operativo es Python2, tendrás que usar `python3` en vez de `python`.
@@ -76,7 +76,7 @@ __Define los modelos necesarios para tu aplicación y aplica una migración a la
 Ejecutando el siguiente comando, podrás entrar a un shell interactivo de Django:
 
 ```
-python manage.py shell
+$ python manage.py shell
 ``` 
 
 ### Ejercicio
@@ -101,7 +101,7 @@ __Crea un super usuario y accede al panel de administración de Django. Recuerda
 ### Ejercicio
 __¿Dónde están los modelos que has creado en tu aplicación? Debes añadirlos al panel de administración en el script `admin.py` de tu aplicación. Para ello, debes usar la función `admin.site.register(<modelo>)`, donde `<modelo>` es el modelo que quieres registrar en el panel de administración (recuerda, por tanto, importar tus modelos en el script `admin.py`).__
 
-## Las vistas y las URLs
+## Las vistas
 Una vista es una "interfaz" entre nuestra aplicación y el archivo HTML que se carga en el navegador. Por ejemplo, si tenemos un blog podemos ir añadiendo entradas al `index.html` de forma manual, aunque llegará un momento en el que sea una tarea muy pesada. Con Django, esto se resuelve de manera muy elegante: mediante plantillas y vistas.
 
 Las vistas se definen en el fichero `views.py` en forma de funciones. Estas funciones tienen dos características especiales:
@@ -123,3 +123,9 @@ def entrada(request, id):
 ### Ejercicio
 __En el ejemplo anterior no se comprueba si la entrada solicitada existe o no. Crea una vista para tu proyecto, lanzando un error 404 si no existe el contenido solicitado.__
 
+## Plantillas
+Una vez hemos definido las diferentes vistas de nuestra aplicación, vamos a hacer una plantilla HTML. Estas plantillas son ficheros HTML normales que colocan llamadas a las vistas con una sintaxis especial. A continuación veremos un ejemplo.
+
+En primer lugar, debemos crear un nuevo directorio llamado _templates_ dentro de nuestra aplicación.
+
+## Las URLs
