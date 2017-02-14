@@ -38,4 +38,28 @@ Una vez tengamos nuestro proyecto creado, Django creará un directorio con los s
   * __miapp/wsgi.py__: Script python que contiene un pequeño servidor web para realizar pruebas. Este servidor sólo sirve para desarrollar y depurar nuestra aplicación y, para ponerla en producción debemos pasar a usar un servidor _Apache_, _ngix_, etc.
 
 ## ¡Hola mundo!
-Para verificar que nuestra aplicación funciona,
+Para verificar que nuestra aplicación funciona, vamos a ejecutar el servidor de pruebas que nos facilita Django. Para ello, usamos el script `manage.py`.
+
+### Ejercicio
+__¿Qué parámetros hay que pasarle al script `manage.py` para poder ejecutar el servidor de Django? ¿Y si quieres ejecutar el servidor en un puerto específico?__ Pista: todo está en la [documentación](https://docs.djangoproject.com/en/1.10/ref/django-admin/#django-admin-runserver).
+
+Una vez hayamos ejecutado el servidor, tenemos que abrir la URL que nos indica en consola y veremos un mensaje indicándonos que todo ha funcionado correctamente.
+
+## Creando nuestra primera app
+Hasta ahora, lo único que hemos hecho ha sido crear un __proyecto__ Django. Ahora vamos a pasar a crear una __aplicación__. ¿Cuál es la diferencia entre una aplicación y un proyecto? Una aplicación es una aplicación web que hace algo (por ejemplo, una base de datos, un formulario, etc) y un proyecto es un conjunto de aplicaciones con una configuración concreta para una web en particular. Una app puede estar en varios proyectos y un proyecto puede tener varias apps.
+
+### Ejercicio
+__Crea una aplicación para tu proyecto Django. ¿Qué parámetros hay que pasarle al script `manage.py` para ello?__
+
+## Las vistas y las URLs
+Una vista en Django es una función Python que comunica una app con el template HTML de nuestra web. Con las vistas. Por ejemplo, imagina que nuestra aplicación es una base de datos sobre restaurantes, podríamos añadir restaurantes directamente al fichero HTML de nuestra web, aunque llegará un momento en el que será imposible administrar y añadir nuestros restaurantes. Django nos permite hacerlo de una forma muy sencilla: creando una platilla HTML que se comunica con la aplicación Django y ésta se encarga de poner los restaurantes almacenados en la base de datos. Para realizar esta comunicación, están las vistas.
+
+Las vistas se definen en el fichero `views.py` de nuestra aplicación.
+
+### Ejercicio
+__Crea una vista llamada `index` que imprima el siguiente mensaje:__ "hola! esta es mi primera vista".
+
+Antes de ejecutar el servidor para ver nuestro _hola mundo_, debemos configurar la URL que Django debe de usar para llamar a la vista. Para ello, debemos crear un nuevo fichero en nuestra aplicación llamado `urls.py`.
+
+### Ejercicio
+__Consulta en la [documentación](https://docs.djangoproject.com/en/1.10/topics/http/urls/) cómo crear una URL para la vista `index` y, a continuación, crea una URL para la misma.__
