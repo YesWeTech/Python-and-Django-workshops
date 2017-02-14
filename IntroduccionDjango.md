@@ -76,3 +76,13 @@ En la configuración, podemos añadir las aplicaciones que queramos usar en nues
 __¿Cómo se ejecuta una migración en Django? Ejecuta una para poder crear las tablas necesarias para las aplicaciones de nuestro proyecto.__
 
 ## Modelos
+Si ya sabes algo de bases de datos, sabrás que en una base de datos se deben definir diferentes entidades y sus relaciones entre ellas. Hay lenguajes de programación, como SQL, para hacer esto. En SQL definimos diferentes tablas, cada tabla tendrá unos atributos asociados a una determinada entidad y _claves_ a otras tablas para definir relaciones.
+
+En Django, nos podemos abstraer de todo esto y definir nuestra base de datos a través de clases Python, es decir, como si definiésemos un objeto.
+
+Volviendo al ejemplo de los Restaurantes, el modelo Restaurante tendrá unos determinados atributos como la dirección o el tipo de comida que sirve. Podríamos también guardar en nuestra base de datos quién es el dueño del restaurante, definiendo otro modelo que contendría un nombre y __una relación__ con el modelo restaurante.
+
+Para definir los modelos de una aplicación usamos el fichero [`models.py`](https://docs.djangoproject.com/en/1.10/ref/models/instances/#django.db.models.Model) de nuestra aplicación.
+
+### Ejercicio
+__Define los modelos necesarios para tu aplicación y aplica una migración a la base de datos.__
