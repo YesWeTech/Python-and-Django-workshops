@@ -102,3 +102,4 @@ __Crea un super usuario y accede al panel de administración de Django. Recuerda
 __¿Dónde están los modelos que has creado en tu aplicación? Debes añadirlos al panel de administración en el script `admin.py` de tu aplicación. Para ello, debes usar la función `admin.site.register(<modelo>)`, donde `<modelo>` es el modelo que quieres registrar en el panel de administración (recuerda, por tanto, importar tus modelos en el script `admin.py`).__
 
 ## Las vistas y las URLs
+Una vista es una "interfaz" entre nuestra aplicación y el archivo HTML que se carga en el navegador. Por ejemplo, si tenemos un blog podemos ir añadiendo entradas al `index` de forma manual, aunque llegará un momento en el que sea una tarea muy pesada. Con Django, esto se resuelve de manera muy elegante: mediante plantillas y vitas.
