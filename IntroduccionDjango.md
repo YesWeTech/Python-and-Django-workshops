@@ -62,4 +62,4 @@ __Crea una vista llamada `index` que imprima el siguiente mensaje:__ "hola! esta
 Antes de ejecutar el servidor para ver nuestro _hola mundo_, debemos configurar la URL que Django debe de usar para llamar a la vista. Para ello, debemos crear un nuevo fichero en nuestra aplicación llamado `urls.py`.
 
 ### Ejercicio
-__Consulta en la [documentación](https://docs.djangoproject.com/en/1.10/topics/http/urls/) cómo crear una URL para la vista `index` y, a continuación, crea una URL para la misma.__ Ten en cuenta que tendrás que incluir las URLs de tu aplicación en el fichero URLs de tu proyecto.
+__Consulta en la [documentación](https://docs.djangoproject.com/en/1.10/topics/http/urls/) cómo crear una URL para la vista `index` y, a continuación, crea una URL para la misma.__ Ten en cuenta que tendrás que incluir las URLs de tu aplicación en el fichero URLs de tu proyecto (función [include()](https://docs.djangoproject.com/en/1.10/ref/urls/#django.conf.urls.include)).
