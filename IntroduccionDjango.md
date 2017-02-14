@@ -46,7 +46,9 @@ __¿Qué parámetros hay que pasarle al script `manage.py` para poder ejecutar e
 Una vez hayamos ejecutado el servidor, tenemos que abrir la URL que nos indica en consola y veremos un mensaje indicándonos que todo ha funcionado correctamente.
 
 ## Creando nuestra primera app
-Hasta ahora, lo único que hemos hecho ha sido crear un __proyecto__ Django. Ahora vamos a pasar a crear una __aplicación__. ¿Cuál es la diferencia entre una aplicación y un proyecto? Una aplicación es una aplicación web que hace algo (por ejemplo, una base de datos, un formulario, etc) y un proyecto es un conjunto de aplicaciones con una configuración concreta para una web en particular. Una app puede estar en varios proyectos y un proyecto puede tener varias apps.
+Hasta ahora, lo único que hemos hecho ha sido crear un __proyecto__ Django. Ahora vamos a pasar a crear una __aplicación__. ¿Cuál es la diferencia entre una aplicación y un proyecto? Una aplicación es un módulo que hace algo (por ejemplo, una base de datos, un formulario, etc) y un proyecto es un conjunto de aplicaciones con una configuración concreta para una web en particular. Una app puede estar en varios proyectos y un proyecto puede tener varias apps.
+
+Las apps se suelen hacer de forma modular, para que puedan ser reusables. Aunque no hay nada definido en cuanto a cómo dividir un proyecto en apps, hay [discusiones](http://stackoverflow.com/questions/4879036/django-projects-vs-apps) sobre el tema en la red.
 
 ### Ejercicio
 __Crea una aplicación para tu proyecto Django. ¿Qué parámetros hay que pasarle al script `manage.py` para ello?__
@@ -76,11 +78,7 @@ En la configuración, podemos añadir las aplicaciones que queramos usar en nues
 __¿Cómo se ejecuta una migración en Django? Ejecuta una para poder crear las tablas necesarias para las aplicaciones de nuestro proyecto.__
 
 ## Modelos
-Si ya sabes algo de bases de datos, sabrás que en una base de datos se deben definir diferentes entidades y sus relaciones entre ellas. Hay lenguajes de programación, como SQL, para hacer esto. En SQL definimos diferentes tablas, cada tabla tendrá unos atributos asociados a una determinada entidad y _claves_ a otras tablas para definir relaciones.
-
-En Django, nos podemos abstraer de todo esto y definir nuestra base de datos a través de clases Python, es decir, como si definiésemos un objeto.
-
-Volviendo al ejemplo de los Restaurantes, el modelo Restaurante tendrá unos determinados atributos como la dirección o el tipo de comida que sirve. Podríamos también guardar en nuestra base de datos quién es el dueño del restaurante, definiendo otro modelo que contendría un nombre y __una relación__ con el modelo restaurante.
+Imagina que tu aplicación es un blog en el cual los post pueden recibir comentarios de cualquier usuario. En este caso, tendríamos dos elementos principales: un post y un comentario. Estas entidades se representan en Django en forma de __modelos__. Django nos ofrece la facilidad de definir nuestros modelos como si fuesen objetos Python, es decir, mediante clases. Esto es posible debido a que implementa un [__Object-Relational Mapping__](https://en.wikipedia.org/wiki/Object-relational_mapping), una técnica que permite crear tablas de [entidad-relación](https://en.wikipedia.org/wiki/Entity%E2%80%93relationship_model) a partir de objetos.
 
 Para definir los modelos de una aplicación usamos el fichero [`models.py`](https://docs.djangoproject.com/en/1.10/ref/models/instances/#django.db.models.Model) de nuestra aplicación.
 
