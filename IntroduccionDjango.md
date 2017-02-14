@@ -83,5 +83,38 @@ Imagina que tu aplicación es un blog en el cual los post pueden recibir comenta
 Para definir los modelos de una aplicación usamos el fichero [`models.py`](https://docs.djangoproject.com/en/1.10/ref/models/instances/#django.db.models.Model) de nuestra aplicación.
 
 ### Ejercicio
-__Define los modelos necesarios para tu aplicación y aplica una migración a la base de datos.__
+__Define los modelos necesarios para tu aplicación y aplica una migración a la base  de datos.__ Recuerda que antes de hacer la migración debes añadir la aplicación que creaste a las aplicaciones instaladas del proyecto en el fichero `settings.py` y que antes de hacer la migración sobre el proyecto, debes usar el comando [`makemigrations`](https://docs.djangoproject.com/en/1.10/ref/django-admin/#django-admin-makemigrations) sobre la aplicación.
+
+## Añadiendo datos a nuestra base de datos con la shell de Django
+Ejecutando el siguiente comando, podrás entrar a un shell interactivo de Django:
+
+```
+python manage.py shell
+``` 
+
+### Ejercicio
+__En la shell de Django, importa los modelos que has creado en el paso anterior y crea varias instancias de las clases modelo. Usa la función `save()` para guardar estos objetos en la base de datos. ¿Cómo podríamos automatizar esta tarea con un script?__
+
+### Ejercicio
+**Añade un método `__str__()` a tus modelos para poder imprimir información sobre los mismos en el shell de Django. Consulta en la [documentación](https://docs.djangoproject.com/en/1.10/ref/models/instances/#django.db.models.Model.__str__) qué más métodos puedes crear en los modelos.**
+
+### Ejercicio
+__En la [documentación](https://docs.djangoproject.com/en/1.10/topics/db/queries/#field-lookups-intro) nos explican cómo hacer búsquedas en la base de datos. Prueba a hacer diferentes búsquedas usando las funciones `get` y `filter`.__
+
+## Panel de Administración de Django
+Una de las aplicaciones instaladas que Django incluye por defecto en los proyectos es [`django.contrib.admin`](https://docs.djangoproject.com/en/1.10/ref/contrib/admin/#module-django.contrib.admin). Esta aplicación nos proporciona un panel de control web de nuestra base de datos. Nos permite añadir y eliminar objetos, entre otras cosas.
+
+Pero para poder acceder al panel de administración, primero debemos crear un superusuario. Esto se hace usando el script python `manage.py`.
+
+Dentro del panel de administración tendremos modelos ya creados: Groups y Users. Estos modelos son creados por otra de las aplicaciones por defecto de Django: [`django.contrib.auth`](https://docs.djangoproject.com/en/1.10/topics/auth/#module-django.contrib.auth).
+
+### Ejercicio
+__Crea un super usuario y accede al panel de administración de Django. Recuerda que el panel de administración está en la URL _/admin/_.__
+
+### Ejercicio
+__¿Dónde están los modelos que has creado en tu aplicación? Debes añadirlos al panel de administración en el script `admin.py` de tu aplicación. Para ello, debes usar la función `admin.site.register(<modelo>)`, donde `<modelo>` es el modelo que quieres registrar en el panel de administración (recuerda, por tanto, importar tus modelos en el script `admin.py`).__
+
+
+
+
 
