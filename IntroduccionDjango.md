@@ -98,7 +98,7 @@ python manage.py shell
 __En la shell de Django, importa los modelos que has creado en el paso anterior y crea varias instancias de las clases modelo. Usa la función `save()` para guardar estos objetos en la base de datos. ¿Cómo podríamos automatizar esta tarea con un script?__
 
 ### Ejercicio
-__Añade un método `__str__()` a tus modelos para poder imprimir información sobre los mismos en el shell de Django. Consulta en la [documentación](https://docs.djangoproject.com/en/1.10/ref/models/instances/#django.db.models.Model.__str__) qué más métodos puedes crear en los modelos.__
+__Añade un método `\_\_str\_\_()` a tus modelos para poder imprimir información sobre los mismos en el shell de Django. Consulta en la [documentación](https://docs.djangoproject.com/en/1.10/ref/models/instances/#django.db.models.Model.__str__) qué más métodos puedes crear en los modelos.__
 
 ### Ejercicio
 __En la [documentación](https://docs.djangoproject.com/en/1.10/topics/db/queries/#field-lookups-intro) nos explican cómo hacer búsquedas en la base de datos. Prueba a hacer diferentes búsquedas usando las funciones `get` y `filter`.__
