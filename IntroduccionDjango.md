@@ -53,19 +53,6 @@ Las apps se suelen hacer de forma modular, para que puedan ser reusables. Aunque
 ### Ejercicio
 __Crea una aplicación para tu proyecto Django. ¿Qué parámetros hay que pasarle al script `manage.py` para ello?__
 
-## Las vistas y las URLs
-Una vista en Django es una función Python que comunica una app con el template HTML de nuestra web. Con las vistas. Por ejemplo, imagina que nuestra aplicación es una base de datos sobre restaurantes, podríamos añadir restaurantes directamente al fichero HTML de nuestra web, aunque llegará un momento en el que será imposible administrar y añadir nuestros restaurantes. Django nos permite hacerlo de una forma muy sencilla: creando una platilla HTML que se comunica con la aplicación Django y ésta se encarga de poner los restaurantes almacenados en la base de datos. Para realizar esta comunicación, están las vistas.
-
-Las vistas se definen en el fichero `views.py` de nuestra aplicación.
-
-### Ejercicio
-__Crea una vista llamada `index` que imprima el siguiente mensaje:__ "hola! esta es mi primera vista".
-
-Antes de ejecutar el servidor para ver nuestro _hola mundo_, debemos configurar la URL que Django debe de usar para llamar a la vista. Para ello, debemos crear un nuevo fichero en nuestra aplicación llamado `urls.py`.
-
-### Ejercicio
-__Consulta en la [documentación](https://docs.djangoproject.com/en/1.10/topics/http/urls/) cómo crear una URL para la vista `index` y, a continuación, crea una URL para la misma.__ Ten en cuenta que tendrás que incluir las URLs de tu aplicación en el fichero URLs de tu proyecto (función [include()](https://docs.djangoproject.com/en/1.10/ref/urls/#django.conf.urls.include)).
-
 ## La configuración de nuestro proyecto
 El fichero `settings.py` de nuestro proyecto tiene todos los parámetros de [configuración](https://docs.djangoproject.com/en/1.10/ref/settings/) de nuestro proyecto. Por ejemplo, incluye el gestor de base de datos que Django usará en nuestra aplicación. Por defecto es __SQLite3__ pero si vas a hacer un proyecto más serio, se recomienda usar otro cliente. En la documentación encontrarás información sobre cómo [instalar una base de datos](https://docs.djangoproject.com/en/1.10/topics/install/#database-installation).
 
@@ -114,7 +101,4 @@ __Crea un super usuario y accede al panel de administración de Django. Recuerda
 ### Ejercicio
 __¿Dónde están los modelos que has creado en tu aplicación? Debes añadirlos al panel de administración en el script `admin.py` de tu aplicación. Para ello, debes usar la función `admin.site.register(<modelo>)`, donde `<modelo>` es el modelo que quieres registrar en el panel de administración (recuerda, por tanto, importar tus modelos en el script `admin.py`).__
 
-
-
-
-
+## Las vistas y las URLs
