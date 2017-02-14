@@ -86,3 +86,4 @@ Para definir los modelos de una aplicación usamos el fichero [`models.py`](http
 
 ### Ejercicio
 __Define los modelos necesarios para tu aplicación y aplica una migración a la base de datos.__
+
