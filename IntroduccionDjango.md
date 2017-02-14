@@ -102,4 +102,24 @@ __Crea un super usuario y accede al panel de administración de Django. Recuerda
 __¿Dónde están los modelos que has creado en tu aplicación? Debes añadirlos al panel de administración en el script `admin.py` de tu aplicación. Para ello, debes usar la función `admin.site.register(<modelo>)`, donde `<modelo>` es el modelo que quieres registrar en el panel de administración (recuerda, por tanto, importar tus modelos en el script `admin.py`).__
 
 ## Las vistas y las URLs
-Una vista es una "interfaz" entre nuestra aplicación y el archivo HTML que se carga en el navegador. Por ejemplo, si tenemos un blog podemos ir añadiendo entradas al `index` de forma manual, aunque llegará un momento en el que sea una tarea muy pesada. Con Django, esto se resuelve de manera muy elegante: mediante plantillas y vitas.
+Una vista es una "interfaz" entre nuestra aplicación y el archivo HTML que se carga en el navegador. Por ejemplo, si tenemos un blog podemos ir añadiendo entradas al `index.html` de forma manual, aunque llegará un momento en el que sea una tarea muy pesada. Con Django, esto se resuelve de manera muy elegante: mediante plantillas y vistas.
+
+Las vistas se definen en el fichero `views.py` en forma de funciones. Estas funciones tienen dos características especiales:
+
+- Deben devolver o bien un objeto [`HttpResponse`](https://docs.djangoproject.com/en/1.10/ref/request-response/#django.http.HttpResponse) con el contenido que ha sido solicitado o bien lanzar una excepción (por ejemplo, [`Http404`](https://docs.djangoproject.com/en/1.10/topics/http/views/#django.http.Http404)).
+- Su primer parámetro es un objeto [`HttpRequest`](https://docs.djangoproject.com/en/1.10/ref/request-response/#django.http.HttpRequest), y corresponde con la petición que ha hecho el navegador para obtener el contenido de la página.
+
+Por ejemplo, si quisiéramos hacer una vista para imprimir el contenido de una entrada de blog concreta usaríamos la siguiente vista:
+
+```
+from django.http import HttpResponse
+from .models import BlogEntry
+
+def entrada(request, id):
+    texto = BlogEntry.objects.get(entry_id=id)
+    return HttpResponse(texto)
+```
+
+### Ejercicio
+__En el ejemplo anterior no se comprueba si la entrada solicitada existe o no. Crea una vista para tu proyecto, lanzando un error 404 si no existe el contenido solicitado.__
+
