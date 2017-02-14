@@ -63,3 +63,16 @@ Antes de ejecutar el servidor para ver nuestro _hola mundo_, debemos configurar 
 
 ### Ejercicio
 __Consulta en la [documentación](https://docs.djangoproject.com/en/1.10/topics/http/urls/) cómo crear una URL para la vista `index` y, a continuación, crea una URL para la misma.__ Ten en cuenta que tendrás que incluir las URLs de tu aplicación en el fichero URLs de tu proyecto (función [include()](https://docs.djangoproject.com/en/1.10/ref/urls/#django.conf.urls.include)).
+
+## La configuración de nuestro proyecto
+El fichero `settings.py` de nuestro proyecto tiene todos los parámetros de [configuración](https://docs.djangoproject.com/en/1.10/ref/settings/) de nuestro proyecto. Por ejemplo, incluye el gestor de base de datos que Django usará en nuestra aplicación. Por defecto es __SQLite3__ pero si vas a hacer un proyecto más serio, se recomienda usar otro cliente. En la documentación encontrarás información sobre cómo [instalar una base de datos](https://docs.djangoproject.com/en/1.10/topics/install/#database-installation).
+
+### Ejercicio
+__Modifica el fichero `settings.py` con la configuración que necesites para tu proyecto. Consulta la documentación para saber los valores que puede tomar cada parámetro de la configuración.__
+
+En la configuración, podemos añadir las aplicaciones que queramos usar en nuestro proyecto. Por defecto, Django incluye unas cuantas. Algunas de estas aplicaciones usan la base de datos, por lo que debemos crear las tablas en la misma antes de poder usarlas. Para hacer esto, se utilizan las denominadas [migrations](https://docs.djangoproject.com/en/1.10/ref/django-admin/#django-admin-migrate).
+
+### Ejercicio
+__¿Cómo se ejecuta una migración en Django? Ejecuta una para poder crear las tablas necesarias para las aplicaciones de nuestro proyecto.__
+
+## Modelos
