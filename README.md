@@ -3,8 +3,8 @@ Tutoriales usados en nuestro taller de Python y Django "Women in Django".
 
 ## Contenidos
 * __Tutorial básico de Python y programación__: conceptos básicos de programación explicados con python.
-* __Tutorial a nivel intermedio de Python__: introducción a `numpy` y a la programación funcional.
-* __Tutorial básico de Django__: conceptos básicos sobre django.
+* __Tutorial a nivel intermedio de Python__: introducción a `numpy` y a la programación funcional. Hecho por [__Braulio Vargas López__](https://github.com/brauliov).
+* __Tutorial básico de Django__: conceptos básicos sobre django. Con la colaboración de __Pedro Serrano Prieto__ ([_Lecrín Technologies_](https://lecrintech.com/)).
 
 ## Enlaces externos de interés
 * [Diferencias entre Python2 y Python3](https://www.digitalocean.com/community/tutorials/python-2-vs-python-3-practical-considerations-2)
