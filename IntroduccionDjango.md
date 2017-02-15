@@ -101,14 +101,12 @@ __Crea un super usuario y accede al panel de administración de Django. Recuerda
 ### Ejercicio
 __¿Dónde están los modelos que has creado en tu aplicación? Debes añadirlos al panel de administración en el script `admin.py` de tu aplicación. Para ello, debes usar la función `admin.site.register(<modelo>)`, donde `<modelo>` es el modelo que quieres registrar en el panel de administración (recuerda, por tanto, importar tus modelos en el script `admin.py`).__
 
-## Las vistas
-Una vista es una "interfaz" entre nuestra aplicación y el archivo HTML que se carga en el navegador. Por ejemplo, si tenemos un blog podemos ir añadiendo entradas al `index.html` de forma manual, aunque llegará un momento en el que sea una tarea muy pesada. Con Django, esto se resuelve de manera muy elegante: mediante plantillas y vistas.
+## Views
+Django sigue una arquitectura similar al tradicional [MVC](https://es.wikipedia.org/wiki/Modelo%E2%80%93vista%E2%80%93controlador), pero con algunas peculiaridades que lo hacen más fácil de modularizar, para poder reutilizar sus componentes más fácilmente. Esta arquitectura, se denomina __MVT (*model*, *view*, *template*)__. En comparación con el MVC original, los views corresponderían con los controladores, y las plantillas con las vistas. 
 
-Las vistas se definen en el fichero `views.py` en forma de funciones. Estas funciones tienen dos características especiales:
+Los views, son funciones (aunque también se pueden construir con clases) encargadas de convertir un [`HttpRequest`](https://docs.djangoproject.com/en/1.10/ref/request-response/#django.http.HttpRequest) (petición web) en un [`HttpResponse`](https://docs.djangoproject.com/en/1.10/ref/request-response/#django.http.HttpResponse) (respuesta web). Para orquestar este funcionamiento, es necesario un listado de "urls" para que el dispatcher sepa qué función debe aplicar a cada petición, según la URL que esta contenga. 
 
-- Deben devolver o bien un objeto [`HttpResponse`](https://docs.djangoproject.com/en/1.10/ref/request-response/#django.http.HttpResponse) con el contenido que ha sido solicitado o bien lanzar una excepción (por ejemplo, [`Http404`](https://docs.djangoproject.com/en/1.10/topics/http/views/#django.http.Http404)).
-- Su primer parámetro es un objeto [`HttpRequest`](https://docs.djangoproject.com/en/1.10/ref/request-response/#django.http.HttpRequest), y corresponde con la petición que ha hecho el navegador para obtener el contenido de la página.
-- Si en vez de un contenido Http queremos devolver un Json, podemos hacerlo usando la clase [`JsonResponse`](https://docs.djangoproject.com/en/1.10/ref/request-response/#django.http.JsonResponse), que es muy similar a `HttpResponse`.
+Además de construir una respuesta, cada view puede tener efectos colaterales sobre el sistema, como por ejemplo, la creación de nuevos objetos en la BD o la modificación de objetos ya existentes. En cualquier caso, los views siempre devolverán una respuesta HTTP. Esta no tiene por qué ser un fichero HTML, sino cualquier tipo de fichero (CSS, JS, JSON, XML...).
 
 Por ejemplo, si quisiéramos hacer una vista para imprimir el contenido de una entrada de blog concreta usaríamos la siguiente vista:
 
@@ -128,7 +126,7 @@ __Modifica el ejemplo anterior usando los _shortcuts_ de Django: [`render`](http
 __Crea una vista para tu proyecto, lanzando un error 404 si no existe el contenido solicitado.__
 
 
-## Plantillas
+## Templates
 Una vez hemos definido las diferentes vistas de nuestra aplicación, vamos a hacer una plantilla HTML. Estas plantillas son ficheros HTML normales que colocan llamadas a las vistas con una sintaxis especial. Para ver ejemplos de plantillas Django puedes consultar la [documentación](https://docs.djangoproject.com/en/1.10/ref/templates/language/). También es importante que consultes las [etiquetas y filtros que Django incorpora en las plantillas](https://docs.djangoproject.com/en/1.10/ref/templates/builtins/).
 
 Para definir una plantilla, en primer lugar debemos crear un nuevo directorio llamado _templates_ dentro de nuestra aplicación y, dentro del directorio templates debemos crear otro directorio con el nombre de nuestra aplicación. Dentro de este último directorio se encontrará nuestra plantilla HTML. Por tanto, siguiendo con el ejemplo del blog, tendríamos la siguiente estructura de directorios:
