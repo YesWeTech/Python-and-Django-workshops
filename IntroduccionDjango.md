@@ -125,9 +125,9 @@ def entrada(request, id):
 __En el ejemplo anterior no se comprueba si la entrada solicitada existe o no. Crea una vista para tu proyecto, lanzando un error 404 si no existe el contenido solicitado.__
 
 ## Plantillas
-Una vez hemos definido las diferentes vistas de nuestra aplicación, vamos a hacer una plantilla HTML. Estas plantillas son ficheros HTML normales que colocan llamadas a las vistas con una sintaxis especial. A continuación veremos un ejemplo.
+Una vez hemos definido las diferentes vistas de nuestra aplicación, vamos a hacer una plantilla HTML. Estas plantillas son ficheros HTML normales que colocan llamadas a las vistas con una sintaxis especial. Para ver ejemplos de plantillas Django puedes consultar la [documentación](https://docs.djangoproject.com/en/1.10/ref/templates/language/).
 
-En primer lugar, debemos crear un nuevo directorio llamado _templates_ dentro de nuestra aplicación y, dentro del directorio templates debemos crear otro directorio con el nombre de nuestra aplicación. Dentro de este último directorio se encontrará nuestra plantilla HTML. Por tanto, siguiendo con el ejemplo del blog, tendríamos la siguiente estructura de directorios:
+Para definir una plantilla, en primer lugar debemos crear un nuevo directorio llamado _templates_ dentro de nuestra aplicación y, dentro del directorio templates debemos crear otro directorio con el nombre de nuestra aplicación. Dentro de este último directorio se encontrará nuestra plantilla HTML. Por tanto, siguiendo con el ejemplo del blog, tendríamos la siguiente estructura de directorios:
 
 ```
 blog
