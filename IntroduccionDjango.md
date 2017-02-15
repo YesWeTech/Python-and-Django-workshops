@@ -156,7 +156,7 @@ Para definir una URL se utiliza la función [`url`](https://docs.djangoproject.c
 
 ¿Recuerdas que el panel de administración de administración estaba en la URL _/admin/_? Esto es debido a que su URL se ha definido de la siguiente forma:
 
-```
+```python
 url(r'^admin/', admin.site.urls)
 ```
 
@@ -182,3 +182,10 @@ __Define las URLs de las vistas que has definido en tu aplicación en el fichero
 
 Te habrás dado cuenta que para incluir las URLs de la aplicación `admin` no ha sido necesario usar la función `include`. Esta es la única excepción, siempre que quieras referencias otros URLconfs debes usar esta función.
 
+## ¿Por dónde seguir?
+En este taller has aprendido a hacer lo básico con Django, pero aún queda mucho más por hacer. Te dejamos una serie de enlaces interesantes para que puedas seguir ampliando tus conocimientos:
+
+* [La aplicación `django.contrib.auth` para trabajar con usuarios](https://docs.djangoproject.com/en/1.10/topics/auth/)
+* [Formularios en Django](https://docs.djangoproject.com/en/1.10/topics/forms/)
+* [Awesome Django](http://awesome-django.com/)
+* [Django packages](https://djangopackages.org/)
