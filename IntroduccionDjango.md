@@ -122,10 +122,14 @@ def entrada(request, id):
 ```
 
 ### Ejercicio
-__En el ejemplo anterior no se comprueba si la entrada solicitada existe o no. Crea una vista para tu proyecto, lanzando un error 404 si no existe el contenido solicitado.__
+__Modifica el ejemplo anterior usando los _shortcuts_ de Django: [`render`](https://docs.djangoproject.com/en/1.10/topics/http/shortcuts/#django.shortcuts.render) y [`get_object_or_404`](https://docs.djangoproject.com/en/1.10/topics/http/shortcuts/#django.shortcuts.get_object_or_404).__ 
+
+### Ejercicio
+__Crea una vista para tu proyecto, lanzando un error 404 si no existe el contenido solicitado.__
+
 
 ## Plantillas
-Una vez hemos definido las diferentes vistas de nuestra aplicación, vamos a hacer una plantilla HTML. Estas plantillas son ficheros HTML normales que colocan llamadas a las vistas con una sintaxis especial. Para ver ejemplos de plantillas Django puedes consultar la [documentación](https://docs.djangoproject.com/en/1.10/ref/templates/language/).
+Una vez hemos definido las diferentes vistas de nuestra aplicación, vamos a hacer una plantilla HTML. Estas plantillas son ficheros HTML normales que colocan llamadas a las vistas con una sintaxis especial. Para ver ejemplos de plantillas Django puedes consultar la [documentación](https://docs.djangoproject.com/en/1.10/ref/templates/language/). También es importante que consultes las [etiquetas y filtros que Django incorpora en las plantillas](https://docs.djangoproject.com/en/1.10/ref/templates/builtins/).
 
 Para definir una plantilla, en primer lugar debemos crear un nuevo directorio llamado _templates_ dentro de nuestra aplicación y, dentro del directorio templates debemos crear otro directorio con el nombre de nuestra aplicación. Dentro de este último directorio se encontrará nuestra plantilla HTML. Por tanto, siguiendo con el ejemplo del blog, tendríamos la siguiente estructura de directorios:
 
@@ -140,4 +144,41 @@ El parámetro [`TEMPLATES`](https://docs.djangoproject.com/en/1.10/ref/settings/
 
 ¿Por qué es necesario crear un directorio con el nombre de la aplicación dentro del directorio `templates`? Es debido al __Template namespacing__. Si tenemos dos aplicaciones instaladas y ambas tienen una plantilla con el mismo nombre, Django no sabrá distinguir cuál es cuál y, por tanto, cogerá el primer template que encuentre. Para poder distinguir los templates entre aplicaciones, lo más sencillo es colocar los templates de cada aplicación dentro de un directorio con el nombre de la aplicación.
 
+### Ejercicio
+__Define una plantilla `index.html` básica para tu proyecto usando elementos del _Django Template System. Pon los enlaces usando la etiqueta [`url`](https://docs.djangoproject.com/en/1.10/ref/templates/builtins/#url).___
+
 ## Las URLs
+¿Cómo sabe Django cuando un navegador solicita un determinado contenido? Usando la `URLconf`. Cada vista necesita tener asociada una URL para poder ejecutarse. 
+
+Las URLs se definen en el archivo `urls.py` de nuestra aplicación dentro de una __lista__ llamada `urlpatterns`.
+
+Para definir una URL se utiliza la función [`url`](https://docs.djangoproject.com/en/1.10/ref/urls/#django.conf.urls.url) que toma como parámetros una __expresión regular__ que define la URL y la vista para la cual estamos definiendo la URL. Como parámetros opcionales tenemos `kwargs` [para pasar parámetros extra](https://docs.djangoproject.com/en/1.10/topics/http/urls/#views-extra-options) y `name` para [darle un nombre a la URL](https://docs.djangoproject.com/en/1.10/topics/http/urls/#naming-url-patterns).
+
+¿Recuerdas que el panel de administración de administración estaba en la URL _/admin/_? Esto es debido a que su URL se ha definido de la siguiente forma:
+
+```
+url(r'^admin/', admin.site.urls)
+```
+
+### Expresiones regulares
+Las expresiones regulares que usamos para definir URLs no deben de ser muy complicadas, todo lo contrario, debemos intentar que sean lo más simple posibles. Las reglas para expresar patrones más básicas son:
+
+* `^` para empezar un texto.
+* `$` para finalizar un texto.
+* `\d` para los dígitos.
+* `+` para indicar que el item que precede el símbolo `+` se repetirá más de una vez. Por ejemplo, la expresión regular `^(\d+)` nos indica que hay uno o más dígitos.
+* `()` para encapsular parte del patrón.
+
+Volviendo al ejemplo del blog, podríamos definir la URL de un blog de la siguiente forma
+
+```python
+url(r'^post/(\d+)/$', views.post)
+```
+
+Así, cada post tendría asociado un número y para acceder a ellos, sólo tendríamos que usar una URL con dicho número.
+
+### Ejercicio
+__Define las URLs de las vistas que has definido en tu aplicación en el fichero `urls.py` de tu aplicación. Después, incluye las URLs de tu aplicación en el fichero `urls.py` de tu proyecto usando la función [`include`](https://docs.djangoproject.com/en/1.10/ref/urls/#django.conf.urls.include).__
+
+Te habrás dado cuenta que para incluir las URLs de la aplicación `admin` no ha sido necesario usar la función `include`. Esta es la única excepción, siempre que quieras referencias otros URLconfs debes usar esta función.
+
