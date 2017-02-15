@@ -108,6 +108,7 @@ Las vistas se definen en el fichero `views.py` en forma de funciones. Estas func
 
 - Deben devolver o bien un objeto [`HttpResponse`](https://docs.djangoproject.com/en/1.10/ref/request-response/#django.http.HttpResponse) con el contenido que ha sido solicitado o bien lanzar una excepción (por ejemplo, [`Http404`](https://docs.djangoproject.com/en/1.10/topics/http/views/#django.http.Http404)).
 - Su primer parámetro es un objeto [`HttpRequest`](https://docs.djangoproject.com/en/1.10/ref/request-response/#django.http.HttpRequest), y corresponde con la petición que ha hecho el navegador para obtener el contenido de la página.
+- Si en vez de un contenido Http queremos devolver un Json, podemos hacerlo usando la clase [`JsonResponse`](https://docs.djangoproject.com/en/1.10/ref/request-response/#django.http.JsonResponse), que es muy similar a `HttpResponse`.
 
 Por ejemplo, si quisiéramos hacer una vista para imprimir el contenido de una entrada de blog concreta usaríamos la siguiente vista:
 
@@ -126,6 +127,17 @@ __En el ejemplo anterior no se comprueba si la entrada solicitada existe o no. C
 ## Plantillas
 Una vez hemos definido las diferentes vistas de nuestra aplicación, vamos a hacer una plantilla HTML. Estas plantillas son ficheros HTML normales que colocan llamadas a las vistas con una sintaxis especial. A continuación veremos un ejemplo.
 
-En primer lugar, debemos crear un nuevo directorio llamado _templates_ dentro de nuestra aplicación.
+En primer lugar, debemos crear un nuevo directorio llamado _templates_ dentro de nuestra aplicación y, dentro del directorio templates debemos crear otro directorio con el nombre de nuestra aplicación. Dentro de este último directorio se encontrará nuestra plantilla HTML. Por tanto, siguiendo con el ejemplo del blog, tendríamos la siguiente estructura de directorios:
+
+```
+blog
+	|___ templates
+		|___ blog
+			|__ index.html
+```
+
+El parámetro [`TEMPLATES`](https://docs.djangoproject.com/en/1.10/ref/settings/#std:setting-TEMPLATES) del `settings.py` de nuestro proyecto describe cómo Django busca y carga los templates. Por defecto, la opción [`APP_DIRS`](https://docs.djangoproject.com/en/1.10/ref/settings/#std:setting-TEMPLATES-APP_DIRS) es verdadera, lo que significa que Django buscará plantillas en el directorio `templates` de cada aplicación instalada. Debido a este funcionamiento, podemos referinos a nuestro `index.html` simplemente como `blog/index.html` en Django.
+
+¿Por qué es necesario crear un directorio con el nombre de la aplicación dentro del directorio `templates`? Es debido al __Template namespacing__. Si tenemos dos aplicaciones instaladas y ambas tienen una plantilla con el mismo nombre, Django no sabrá distinguir cuál es cuál y, por tanto, cogerá el primer template que encuentre. Para poder distinguir los templates entre aplicaciones, lo más sencillo es colocar los templates de cada aplicación dentro de un directorio con el nombre de la aplicación.
 
 ## Las URLs
