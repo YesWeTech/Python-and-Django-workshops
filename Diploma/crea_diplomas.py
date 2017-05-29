@@ -7,6 +7,8 @@ for asistente in asistentes:
     file = 'diploma_{}.tex'.format(asistente)
     with open(file, 'w') as f:
         f.write("\\documentclass[landscape]{article}\n")
+        f.write("\\usepackage[spanish]{babel}\n")
+        f.write("\\usepackage[utf8]{inputenc}\n")
         f.write("\\usepackage{wallpaper}\n")
         f.write("\\usepackage{niceframe}\n")
         f.write("\\usepackage{xcolor}\n")
