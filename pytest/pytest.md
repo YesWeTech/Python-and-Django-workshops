@@ -63,3 +63,31 @@ test_multiplicar.py .
 ```
 
 Dado un directorio, `pytest` ejecuta todos los scripts python cuyo nombre sea de la forma `test_*.py` o `*_test.py`. Dentro de dichos archivos, es capaz de encontrar funciones cuyo nombre sea de la foram `test_*` o `*_test` o funciones que estén dentro de una clase cuyo nombre empiece por `Test` (https://docs.pytest.org/en/latest/goodpractices.html#test-discovery).
+
+### Más sobre `assert`
+`assert` nos permite asegurar que una condición se cumple en nuestro código y lanzar una excepción en caso de que no se cumpla. Esto puede ser muy útil a la hora de validar una entrada.
+
+Imagina una función que debe recibir un DNI. Como sabemos, el DNI tiene 8 números y, al final, una letra. Además, la letra puede ser calculada con un [simple algoritmo](http://www.interior.gob.es/web/servicios-al-ciudadano/dni/calculo-del-digito-de-control-del-nif-nie).
+
+```python
+def input_validation_dni(input_dni):
+    try:
+        assert len(input_dni) == 9, "El DNI introducido no tiene 9 caracteres"
+        assert input_dni[:8].isnumeric(), "Los primeros 8 caracteres del DNI no son numéricos"
+        assert input_dni[-1].isalpha(), "El último carácter del DNI no es una letra"
+    except AssertionError as e:
+        print ("ERROR: {}".format(str(e)))
+```
+
+Esta función no hace nada si la entrada es correcta, pero imprime un mensaje de error y su razón si la entrada no ha pasado por alguno de los checks. Además, acompañar el check de un mensaje de error nos permite imprimir dicho mensaje después para informar al usuario.
+
+```python
+>>> input_validation_dni('12345678a')
+>>> input_validation_dni('12345678A')
+>>> input_validation_dni('123456780')
+ERROR: El último carácter del DNI no es una letra
+>>> input_validation_dni('1')
+ERROR: El DNI introducido no tiene 9 caracteres
+>>> input_validation_dni('a12345678')
+ERROR: Los primeros 8 caracteres del DNI no son numéricos
+```
