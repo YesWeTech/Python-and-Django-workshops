@@ -92,6 +92,8 @@ ERROR: El DNI introducido no tiene 9 caracteres
 ERROR: Los primeros 8 caracteres del DNI no son numéricos
 ```
 
+__Los `assert` [se eliminan en la ejecución optimizada de python](https://docs.python.org/3/reference/simple_stmts.html#assert) (`python -O`) y, además, sólo deben usarse en tests o similares__.
+
 ### Ejercicio
 
 Un problema muy típico de programación, es el dada una lista de paréntesis, corchetes y llaves, comprobar si se abren y cierran correctamente. Un ejemplo:
