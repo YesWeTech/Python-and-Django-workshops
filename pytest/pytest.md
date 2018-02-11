@@ -103,6 +103,53 @@ Un problema muy típico de programación, es el dada una lista de paréntesis, c
 
 Una vez visto esto, tu tarea consiste en programar una función para resolver este problema y los tests para esta función. (Consejo: programa primero los tests).
 
+## Organizando los test - unittest
+
+Para usar el paquete de tests unitarios, hay que instalar `unittest`. La forma más cómoda de hacerlo es a través de `pip` (como `pytest`):
+
+```bash
+pip install --user -U unittest
+```
+
+`unittest` se suele usar para organizar los test. Por ejemplo, se crea un test para cada módulo de tu aplicación. Volviendo al primer ejemplo, crearemos una clase de test para nuestra función `multiplica_por_dos` (véase el archivo [test_unitest.py](./test_unitest.py)).
+
+En el archivo de ejemplo podemos ver 3 partes:
+
+```python
+class MultiplicarTest(unittest.TestCase):
+```
+
+Esta es nuestra clase de test, que se encargará de testear un módulo completo. En nuestro caso, el módulo `test_multiplicar`, que solo tiene una función.
+
+En el módulo nos podemos encontrar las siguientes tipos de funciones:
+
+- Dentro de la clase
+  - `[setUp/tearDown]Class(cls)`: Se ejecutan antes y después de la clase de test en la que se encuentren. Si tienes varias clases en el mismo módulo de test, permiten crear/destruir objetos concretos que vayan a ser usados en los test de esa clase.
+  - `[setUp/tearDown](self)`: Se ejecutan antes y despues de cada test de la clase en cuestión. Buscan un uso parecido a las funciones de clase, pero a nivel local de cada test.
+  - `<nombre_del_test>(self)`: Tantas funciones como funciones tenga la clase que estas testeando. Como en este caso testeamos la función `multiplica_por_dos`, la función de test se llamará `test_multiplica_por_dos`.
+- Fuera de la clase:
+  - `[setUp/tearDown]Module()`: De manera parecida a las funciones [setUp/tearDown]Class y [setUp/tearDown] de cada clase, este par de funciones se ejecuta al principio y al final del módulo de test completo.
+
+`unittest`, entre otras muchas opciones, permite varias funciones para simular los `assert` vistos en la primera sección de esta guía. Entre las más usadas están:
+
+```python
+# Comprueba si dos valores son iguales
+self.assertEqual(<primer_valor>, <segundo_valor>, <mensaje_de_error>)
+
+# Comprueba si dos valores son distintos
+self.assertNotEqual(<primer_valor>, <segundo_valor>, <mensaje_de_error>)
+
+# Comprueba si se lanza una excepción concreta en el método
+with self.assertRaises(<NombreExcepción>):
+    <método_que_lanza_excepción>()
+```
+
+Como ejemplo sencillo, utilizaremos `assertEqual` y `assertNotEqual` (véase módulo de ejemplo[test_unitest.py](./test_unitest.py))
+
+Para ejecutar el módulo de `test_unittest` podemos usar:
+- `pytest`: buscará todos los módulos con test (incluidos los assert) y los testeará.
+- `pytest <módulo_de_test>`: ejecutará los test del módulo indicado.
+- `python test_unittest.py`: Ejecutará el método `__main__` del módulo (que ejecuta los test).
 
 ## Profiling con pytest
 
