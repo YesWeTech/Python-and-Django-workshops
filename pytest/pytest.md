@@ -103,6 +103,35 @@ Un problema muy típico de programación, es el dada una lista de paréntesis, c
 
 Una vez visto esto, tu tarea consiste en programar una función para resolver este problema y los tests para esta función. (Consejo: programa primero los tests).
 
+## Profiling con pytest
+
+Una de las muchas posibles pruebas que podemos hacerle a nuestro código o aplicación, es el _profiling_, es decir, saber cómo de eficiente o no es nuestro código. Para ello, pytest nos ofrece distintas herramientas, como son el decorador `timeout` y el parámetro de pytest.
+
+Con el parámetro `durations` podemos lanzar una serie de tests y obtener una lista con las ejecuciones más lentas:
+
+```
+$ pytest --durations=10
+============================= test session starts =============================
+platform win32 -- Python 3.6.4, pytest-3.2.5, py-1.5.2, pluggy-0.4.0
+rootdir: C:\Users\Braulio\Documents\Github\Women-In-Django, inifile:
+plugins: django-3.1.2
+collected 1 item
+
+pytest\test_multiplicar.py .
+
+========================== slowest 10 test durations ==========================
+0.00s setup    pytest/test_multiplicar.py::test_multiplica_por_dos
+0.00s call     pytest/test_multiplicar.py::test_multiplica_por_dos
+0.00s teardown pytest/test_multiplicar.py::test_multiplica_por_dos
+========================== 1 passed in 0.05 seconds ===========================
+```
+
+Con `timeout`, podemos parar la ejecución de un test pasado _x_ tiempo. Esto nos puede servir para saber si una función excede un tiempo de ejecución, por si queremos hacer una función más eficiente, o bien, para evitar que nuestro test entre en un bucle infinito sin nosotros saberlo, debido a un fallo en un bucle o similar.
+
+Podemos usar `timeout` de dos formas distintas:
+- Parámetro de pytest: hacemos una llamada a pytest de la siguiente forma: `pytest --timeout=300`. Esto afecta a todos los tests.
+- Decorador de una función: si el el timeout lo queremos aplicar a una función en especial, podemos definir una función con este decorador: `@pytest.mark.timeout(tiempo)`. Esto parará la ejecución de esa función si excede el tiempo que le pongamos, y dará ese test como fallido.
+
 ## Organizando los test - unittest
 
 Para usar el paquete de tests unitarios, hay que instalar `unittest`. La forma más cómoda de hacerlo es a través de `pip` (como `pytest`):
@@ -150,32 +179,3 @@ Para ejecutar el módulo de `test_unittest` podemos usar:
 - `pytest`: buscará todos los módulos con test (incluidos los assert) y los testeará.
 - `pytest <módulo_de_test>`: ejecutará los test del módulo indicado.
 - `python test_unittest.py`: Ejecutará el método `__main__` del módulo (que ejecuta los test).
-
-## Profiling con pytest
-
-Una de las muchas posibles pruebas que podemos hacerle a nuestro código o aplicación, es el _profiling_, es decir, saber cómo de eficiente o no es nuestro código. Para ello, pytest nos ofrece distintas herramientas, como son el decorador `timeout` y el parámetro de pytest.
-
-Con el parámetro `durations` podemos lanzar una serie de tests y obtener una lista con las ejecuciones más lentas:
-
-```
-$ pytest --durations=10
-============================= test session starts =============================
-platform win32 -- Python 3.6.4, pytest-3.2.5, py-1.5.2, pluggy-0.4.0
-rootdir: C:\Users\Braulio\Documents\Github\Women-In-Django, inifile:
-plugins: django-3.1.2
-collected 1 item
-
-pytest\test_multiplicar.py .
-
-========================== slowest 10 test durations ==========================
-0.00s setup    pytest/test_multiplicar.py::test_multiplica_por_dos
-0.00s call     pytest/test_multiplicar.py::test_multiplica_por_dos
-0.00s teardown pytest/test_multiplicar.py::test_multiplica_por_dos
-========================== 1 passed in 0.05 seconds ===========================
-```
-
-Con `timeout`, podemos parar la ejecución de un test pasado _x_ tiempo. Esto nos puede servir para saber si una función excede un tiempo de ejecución, por si queremos hacer una función más eficiente, o bien, para evitar que nuestro test entre en un bucle infinito sin nosotros saberlo, debido a un fallo en un bucle o similar.
-
-Podemos usar `timeout` de dos formas distintas:
-- Parámetro de pytest: hacemos una llamada a pytest de la siguiente forma: `pytest --timeout=300`. Esto afecta a todos los tests.
-- Decorador de una función: si el el timeout lo queremos aplicar a una función en especial, podemos definir una función con este decorador: `@pytest.mark.timeout(tiempo)`. Esto parará la ejecución de esa función si excede el tiempo que le pongamos, y dará ese test como fallido.
