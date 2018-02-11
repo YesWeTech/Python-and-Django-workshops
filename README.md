@@ -7,6 +7,18 @@ Tutoriales usados en nuestro taller de Python y Django "Women in Django".
 * __Tutorial básico de Django__: conceptos básicos sobre django. Con la colaboración de __Pedro Serrano Prieto__ ([_Lecrín Technologies_](https://lecrintech.com/)).
 * __Introducción a TDD, pytest y unittest__: conceptos básicos sobre TDD (con la colaboración de __Manuel Calzado__ ([_Badger Maps_](https://www.badgermapping.com/))), conceptos básicos sobre `pytest` (con la colaboración de __Braulio Vargas López__ ([_Wazuh_](http://wazuh.com/))) y sobre `unittest` (hecho por [__@lulivi__](https://github.com/lulivi)).
 
+## Patrocinadores
+### 2018
+Hemos tenido la suerte de contar con profesionales de cada una de estas empresas ayudándonos a impartir el taller en la edición de 2018. ¡Muchas gracias a todos! ¿Qué mejor patrocinio que este :)?
+
+![](Patrocinios/patrocinadores.png)
+
+* [__Badger Maps__](https://www.badgermapping.com/)
+* [__HitsBook Solutions__](https://t.co/iN6kD3j3eC)
+* [__Wazuh__](https://t.co/0yMEShmokP)
+* [__Clover Biosoft__](http://cloverbiosoft.com/)
+* [__Nazaríes IT__](http://www.nazaries.com/)
+
 ## Enlaces externos de interés
 ### Tutoriales
 * [Diferencias entre Python2 y Python3](https://www.digitalocean.com/community/tutorials/python-2-vs-python-3-practical-considerations-2)
